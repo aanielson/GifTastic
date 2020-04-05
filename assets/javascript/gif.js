@@ -21,10 +21,27 @@ $("button").on("click", function() {
             var p = $("<p>");
             $(p).text(results[i].rating);
             var animalImage = $("<img>");
-            $(animalImage).attr("src", results[i].images.fixed_height.url);
+            //still need to find still url vs. moving url
+            //original display should be moving
+            $(animalImage).attr("src", results[i].images.fixed_height.url)
+            $(animalImage).attr("status", "moving").attr("id", i);
             $(animalDiv).append(p, animalImage);
             $("#displayAnimal").prepend(animalDiv);
         }
+
+        //add code to pause and start the gifs
+        $("img").on("click", function(index) {
+            //if not moving, make it move
+            if (this.status == "still") {
+                this.attr("src", results[index].images.fixed_height.url)
+                this.status == "moving";
+            }
+            //if moving, make it pause
+            if (this.status == "moving") {
+                this.attr("src", results[index].images.fixed_height_still.url)
+                this.status == "still";
+            }
+        })
     })
 })
 
