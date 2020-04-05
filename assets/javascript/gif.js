@@ -27,3 +27,23 @@ $("button").on("click", function() {
         }
     })
 })
+
+//Adding new animal buttons based off of user input
+$("#run-search").on("click", function() {
+    //on click "search" button, run query and produce "top articles"
+    //run an AJAX to get response.data
+    $.ajax ({  
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+
+        //store user input in a variable
+        var searchTerm = $("#search-term").val();
+        //make user input into a new button that displays in the #buttons-display
+        var animalButton = $("<button>");
+        $(animalButton).text(searchTerm);
+        $(animalButton).attr("data-animal", searchTerm);
+        $("#buttons-display").append(animalButton);
+    })
+});
