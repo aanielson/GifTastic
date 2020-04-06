@@ -54,8 +54,8 @@ function setupSearches() {
                 var animalImage = $("<img>");
                 //still need to find still url vs. moving url
                 //original display should be moving
-                $(animalImage).attr("src", result[i].images.fixed_height.url)
-                $(animalImage).attr("status", "moving").attr("id", result[i].id);
+                $(animalImage).attr("src", result[i].images.fixed_height_still.url)
+                $(animalImage).attr("status", "still").attr("id", result[i].id);
                 $(animalDiv).append(p, animalImage);
                 $("#displayAnimal").prepend(animalDiv);
             }
