@@ -36,7 +36,7 @@ function setupSearches() {
             //because we set the limit to 10 in the query URL, we don't need to put 9 in the loop
             for (var i = 0; i < result.length; i++) {
                 var animalDiv = $("<div>");
-                $(animalDiv).attr("class", "animalDiv")
+                $(animalDiv).attr("class", "animalDiv w-50 float-left");
                 var p = $("<p>");
                 $(p).text("Rated: " + result[i].rating);
 
@@ -59,12 +59,15 @@ function setupSearches() {
                 $(animalDiv).append(p, animalImage);
                 $("#displayAnimal").prepend(animalDiv);
             }
+            $("#displayAnimal").append("<div class='clearfix'></div>");
 
-            results = results.concat(result)
+            results = results.concat(result);
 
             //add code to pause and start the gifs
             $("img").on("click", function (e) {
+               
                 var index = results.findIndex(r => r.id == e.target.id)
+                var myId = $(this).attr('id');
                 if (index != -1) {
                     console.log(e);
                     console.log(this);
